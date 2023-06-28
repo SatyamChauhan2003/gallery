@@ -20,11 +20,11 @@ const style = {
 const App = () => {
   const [img, setImg] = useState("");
   const [res, setRes] = useState([]);
-  const [data, setData] = useState("");
+  const [data, setData] = useState();
   const [open, setOpen] = React.useState(false);
   const handleOpen = (e) => {
     setOpen(true);
-    setData(e.target.__reactProps$cn3rtag1eto.src);
+    setData(e.target.__reactProps$moi8zesy40m.src);
   };
   const handleClose = () => setOpen(false);
 console.log(data)
