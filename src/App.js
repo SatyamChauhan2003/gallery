@@ -10,7 +10,7 @@ const style = {
   left: "50%",
   transform: "translate(-50%, -50%)",
   width: 400,
-  height:300,
+  height: 300,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
@@ -20,10 +20,14 @@ const style = {
 const App = () => {
   const [img, setImg] = useState("");
   const [res, setRes] = useState([]);
+  const [data, setData] = useState("");
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = (e) => {
+    setOpen(true);
+    setData(e.target.__reactProps$cn3rtag1eto.src);
+  };
   const handleClose = () => setOpen(false);
-
+console.log(data)
   const fetchRequest = async () => {
     const data = await fetch(
       `https://api.unsplash.com/search/photos?page=1&query=${img}&client_id=${Access_Key}`
@@ -71,6 +75,7 @@ const App = () => {
                       alt="val.alt_description"
                       onClick={handleOpen}
                     />
+
                     <Modal
                       open={open}
                       onClose={handleClose}
@@ -85,10 +90,9 @@ const App = () => {
                         >
                           <img
                             className="col-3 img-fluid img-thumbnail"
-                            style={{width:"320px",height:"260px"}}
-                            src={val.urls.small}
+                            style={{ width: "320px", height: "260px" }}
+                            src={data}
                             alt="val.alt_description"
-                            
                           />
                         </Typography>
                       </Box>
