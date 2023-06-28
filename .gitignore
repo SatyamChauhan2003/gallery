@@ -2,7 +2,7 @@
 /.pnp
 .pnp.js
 
-.src/MyKey.js
+.MyKey.js
 
 # testing
 /coverage
