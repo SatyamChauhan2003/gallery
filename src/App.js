@@ -76,32 +76,33 @@ console.log(data)
                       onClick={handleOpen}
                     />
 
-                    <Modal
-                      open={open}
-                      onClose={handleClose}
-                      aria-labelledby="modal-modal-title"
-                      aria-describedby="modal-modal-description"
-                    >
-                      <Box sx={style}>
-                        <Typography
-                          id="modal-modal-title"
-                          variant="h6"
-                          component="h2"
-                        >
-                          <img
-                            className="col-3 img-fluid img-thumbnail"
-                            style={{ width: "320px", height: "260px" }}
-                            src={data}
-                            alt="val.alt_description"
-                          />
-                        </Typography>
-                      </Box>
-                    </Modal>
+                   
                   </>
                 );
               })}
           </div>
         </div>
+        <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography
+            id="modal-modal-title"
+            variant="h6"
+            component="h2"
+          >
+            <img
+              className="col-3 img-fluid img-thumbnail"
+              style={{ width: "320px", height: "260px" }}
+              src={data}
+              alt="val.alt_description"
+            />
+          </Typography>
+        </Box>
+      </Modal>
       </div>
     </>
   );
