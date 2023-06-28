@@ -20,14 +20,13 @@ const style = {
 const App = () => {
   const [img, setImg] = useState("");
   const [res, setRes] = useState([]);
-  const [data, setData] = useState();
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = (e) => {
     setOpen(true);
-    setData(e.target.__reactProps$moi8zesy40m.src);
   };
   const handleClose = () => setOpen(false);
-console.log(data)
+  
   const fetchRequest = async () => {
     const data = await fetch(
       `https://api.unsplash.com/search/photos?page=1&query=${img}&client_id=${Access_Key}`
@@ -76,33 +75,32 @@ console.log(data)
                       onClick={handleOpen}
                     />
 
-                   
+                    <Modal
+                      open={open}
+                      onClose={handleClose}
+                      aria-labelledby="modal-modal-title"
+                      aria-describedby="modal-modal-description"
+                    >
+                      <Box sx={style}>
+                        <Typography
+                          id="modal-modal-title"
+                          variant="h6"
+                          component="h2"
+                        >
+                          <img
+                            className="col-3 img-fluid img-thumbnail"
+                            style={{ width: "320px", height: "260px" }}
+                            src={val.urls.small}
+                            alt="val.alt_description"
+                          />
+                        </Typography>
+                      </Box>
+                    </Modal>
                   </>
                 );
               })}
           </div>
         </div>
-        <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography
-            id="modal-modal-title"
-            variant="h6"
-            component="h2"
-          >
-            <img
-              className="col-3 img-fluid img-thumbnail"
-              style={{ width: "320px", height: "260px" }}
-              src={data}
-              alt="val.alt_description"
-            />
-          </Typography>
-        </Box>
-      </Modal>
       </div>
     </>
   );
